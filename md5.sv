@@ -17,20 +17,20 @@ module md5(
 	const logic [2:0] SETUP = 2'd1;
 	const logic [2:0] ACCESS = 2'd2;
 
-   logic [31:0]PRDATA[19:0];  // Registrador das palavras
-   logic [31:0]S[15:0];		   // Constante S
-   logic [31:0]T[63:0];		   // Constante T
+	logic [31:0]PRDATA[19:0];  // Registrador das palavras
+  logic [31:0]S[15:0];		   // Constante S
+  logic [31:0]T[63:0];		   // Constante T
 
-   logic [31:0] XX, SS, TT, RR,
+  logic [31:0] XX, SS, TT, RR,
 					 MA, MB, MC, MD;
-	logic [01:0] EE;
+  logic [01:0] EE;
 
 	/**************
 	 * CONTADORES *
 	 **************/
-   logic [0:03]j;     // SS
-   logic [0:03]k;     // XX
-   logic [0:01]c;     // EE
+  logic [0:03]j;     // SS
+  logic [0:03]k;     // XX
+  logic [0:01]c;     // EE
 	logic [0:31]CONS;  // TT
 
 
@@ -224,11 +224,10 @@ module md5(
 
 					end
 					else if(CONS == 65) begin
-
-                  PRDATA[5'h10] <= changeEndian(PRDATA[5'h10] + MA);
-                  PRDATA[5'h11] <= changeEndian(PRDATA[5'h11] + MB);
-                  PRDATA[5'h12] <= changeEndian(PRDATA[5'h12] + MC);
-                  PRDATA[5'h13] <= changeEndian(PRDATA[5'h13] + MD);
+						PRDATA[5'h10] <= changeEndian(PRDATA[5'h10] + MA);
+            PRDATA[5'h11] <= changeEndian(PRDATA[5'h11] + MB);
+            PRDATA[5'h12] <= changeEndian(PRDATA[5'h12] + MC);
+            PRDATA[5'h13] <= changeEndian(PRDATA[5'h13] + MD);
 
 						CONS <= CONS + 6'b1;
 						PREADY_OUT <= 1'd1;
